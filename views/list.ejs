@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+</head>
+
+<body>
+    <h1> <%= listTitle %> </h1>   
+    
+    <form action="/" method="post">
+        <% for(let i = 0; i<listItem.length; i++){ %>
+            <li><%= listItem[i] %></li>
+        <% } %>
+        <input type="text" name="newItem" autocomplete="off">
+        <button type="submit" name="submitBtn" value="tobeChanged">Add</button>
+        
+    
+    </form>
+</body>
+</html>
