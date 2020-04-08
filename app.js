@@ -8,14 +8,13 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine" , "ejs");
 app.use(express.static("public"));
 
-let items = ["Do Homework"];
+let items = [];
 let workItems = [];
 let choreItems = [];
 
+let day = date.getDate();
 app.get("/", function(req,res){
-    
-    let day = date.getDate();
-    res.render("list", {listTitle: day, listItem: items});
+    res.render("list", {listTitle: "Tasks", listItem: items , dateTitle: day});
 });
 
 app.post("/", function(req,res){
@@ -39,11 +38,11 @@ app.post("/", function(req,res){
 });
 
 app.get("/work", function(req,res){
-    res.render("list", {listTitle:"Work List", listItem: workItems });
+    res.render("list", {listTitle:"Work List", listItem: workItems, dateTitle: day });
 });
 
 app.get("/chores", function(req,res){
-    res.render("list", {listTitle:"Chores List", listItem: choreItems });
+    res.render("list", {listTitle:"Chores List", listItem: choreItems, dateTitle: day });
 });
 
 app.listen(3000, function(){

@@ -1,5 +1,6 @@
 html {
-  background-color: rgba(245, 202, 179, 0.8);
+  /* background-color: rgba(245, 202, 179, 0.7); */
+  background-color: #effcef;
   min-height: 1000px;
   font-family: 'helvetica neue';
 }
@@ -18,7 +19,13 @@ h1 {
 }
 
 #heading {
-  background-color: #f67280;
+  background-color: #94d3ac;
+  text-align: center;
+}
+
+#dateHeading{
+ 
+  color: #6f996f;
   text-align: center;
 }
 
@@ -35,7 +42,7 @@ h1 {
 
 input:checked+p {
   text-decoration: line-through;
-  text-decoration-color: #512b58;
+  text-decoration-color: #655c56;
 }
 
 input[type="checkbox"] {
@@ -55,7 +62,7 @@ p {
 
 form {
   text-align: center;
-  margin-left: 20px;
+  margin-left: 7px;
 }
 
 button {
@@ -63,7 +70,7 @@ button {
   width: 50px;
   border-radius: 50%;
   border-color: transparent;
-  background-color: #c06c84;
+  background-color: #655c56;
   color: #fff;
   font-size: 30px;
   padding: 3px 0;
@@ -73,7 +80,7 @@ button {
 }
 
 button:hover{
-  background-color: rgba(192, 108, 132, 0.9);
+  background-color: #94d3ac;
 }
 
 input[type="text"] {
@@ -89,7 +96,7 @@ input[type="text"] {
 
 input[type="text"]:focus {
   outline: none;
-  box-shadow: inset 0 -3px 0 0 #c06c84;
+  box-shadow: inset 0 -3px 0 0 #94d3ac;
 }
 
 ::placeholder {
@@ -99,6 +106,6 @@ input[type="text"]:focus {
 
 footer {
   color: white;
-  color: rgba(0, 0, 0, 0.5);
+  color: rgba(0, 0, 0, 0.2);
   text-align: center;
 }
