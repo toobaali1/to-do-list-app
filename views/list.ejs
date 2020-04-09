@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To Do List</title>
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-
-<body>
+<%- include("header") -%>
+    
     <h1 id="dateHeading"><%= dateTitle %></h1>
     <h1 class="box" id="heading"> <%= listTitle %> </h1>   
     
@@ -23,12 +15,7 @@
             <input type="text" name="newItem" autocomplete="off" placeholder="New Item">
             <button type="submit" name="submitBtn" value=<%= listTitle %> > +</button>
         </div>
-        
-        
-    
+
     </form>
-</body>
-<footer>
-    ToDo List App by Syeda Tooba Ali 
-</footer>
-</html>
+
+<%- include("footer") -%>
