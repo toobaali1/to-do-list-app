@@ -8,9 +8,9 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine" , "ejs");
 app.use(express.static("public"));
 
-let items = [];
-let workItems = [];
-let choreItems = [];
+const items = [];
+const workItems = [];
+const choreItems = [];
 
 let day = date.getDate();
 app.get("/", function(req,res){
@@ -18,7 +18,7 @@ app.get("/", function(req,res){
 });
 
 app.post("/", function(req,res){
-    let item = req.body.newItem;
+    const item = req.body.newItem;
 
     if(req.body.submitBtn === "Work") {
         workItems.push(item);

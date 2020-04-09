@@ -1,8 +1,11 @@
 html {
-  /* background-color: rgba(245, 202, 179, 0.7); */
   background-color: #effcef;
   min-height: 1000px;
   font-family: 'helvetica neue';
+}
+
+body{
+  margin: 0;
 }
 
 h1 {
@@ -84,24 +87,6 @@ form {
   background-color: #94d3ac;
 }
 
-.navigationBtn{
-  border-top-left-radius: 30%;
-  border-top-right-radius: 60%;
-  border-color: transparent;
-  background-color: #ace0c0;
-  cursor: pointer;
-  width: 100px;
-  height: 30px;
-  margin: 0 1px;
-}
-
-.navigationBtn:hover{
-  background-color: #94d3ac;
-}
-
-.navBtns{
-  text-align: center;
-}
 
 input[type="text"] {
   text-align: center;
@@ -128,4 +113,21 @@ footer {
   color: white;
   color: rgba(0, 0, 0, 0.2);
   text-align: center;
+}
+
+.headerNav{
+  height: 45px;
+  background-color: rgba(111, 153, 111, 0.1);
+  padding-top: 20px;
+  
+}
+
+/* Top Navbar Div */
+.navTag{
+  color: #655c56;
+  text-decoration: none;
+  position: relative;
+  left : 75%;
+  padding: 0 20px;
+  font-size: large;
 }
