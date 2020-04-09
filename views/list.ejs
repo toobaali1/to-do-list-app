@@ -1,8 +1,15 @@
 <%- include("header") -%>
     
     <h1 id="dateHeading"><%= dateTitle %></h1>
-    <h1 class="box" id="heading"> <%= listTitle %> </h1>   
+
+    <div class="navBtns">
+        <button class="navigationBtn" onclick="location.href='/'">Tasks</button>
+        <button class="navigationBtn" onclick="location.href='/work'">Work</button>
+        <button class="navigationBtn" onclick="location.href='/chores'">Chores</button>   
+    </div>
+    <h1 class="box" id="heading"> <%= listTitle %> </h1>
     
+   
     <form action="/" method="post">
         <div class="box">
             <% for(let i = 0; i<listItem.length; i++){ %>
@@ -13,7 +20,7 @@
                 
             <% } %>
             <input type="text" name="newItem" autocomplete="off" placeholder="New Item">
-            <button type="submit" name="submitBtn" value=<%= listTitle %> > +</button>
+            <button class="addBtn" type="submit" name="submitBtn" value=<%= listTitle %> > +</button>
         </div>
 
     </form>
