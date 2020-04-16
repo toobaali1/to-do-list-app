@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const date = require(__dirname+"/date.js");
 const mongoose = require("mongoose");
+const _ = require("lodash");
 
 const app = express();
 app.use(bodyParser.urlencoded({extended:true}));
@@ -17,6 +18,15 @@ const itemSchema = {
 
 // make item model
 const Item = mongoose.model("Item", itemSchema);
+
+// make list schema
+const listSchema = {
+    name: String,
+    items: [itemSchema]
+}
+
+// make list model
+const List = mongoose.model("List", listSchema);
 
 let day = date.getDate();
 app.get("/", function(req,res){
@@ -57,6 +67,32 @@ app.post("/delete", function(req,res){
     res.redirect("/")
     
 });
+
+app.get("/:otherList", function(req,res){
+
+    const listName = _.capitalize(req.params.otherList);
+    
+    List.findOne({name: listName }, function(err, foundList){
+        if(!foundList){
+            // add list
+            const list = new List({
+                name: listName,
+                items: []
+            });
+
+            console.log("Creating list");
+            list.save();
+            res.redirect("/"+listName)
+        }
+        else{
+            // show an existing list
+            res.render("list", {listTitle: listName, listItem: foundList.items , dateTitle: day});   
+        }
+    });
+    
+    
+    
+})
 
 app.listen(3000, function(){
     console.log("Server running at port 3000");
