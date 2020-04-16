@@ -34,18 +34,19 @@ app.get("/", function(req,res){
 
 app.post("/", function(req,res){
 
+    const listName = req.body.submitBtn;
+
     const item = new Item({
         name: req.body.newItem
     });
 
-    if(req.body.submitBtn === "Tasks") {
+    if(listName === "Tasks") {
         item.save();
         res.redirect("/");
     }
 
-    else if(req.body.submitBtn === "Chores"){
-        choreItems.push(item);
-        res.redirect("/chores");
+    else {
+        
     }
    
 });
@@ -61,4 +62,7 @@ app.listen(3000, function(){
     console.log("Server running at port 3000");
     
 });
+
+// Add and delete from custom lists
+// show custom lists on header
 
