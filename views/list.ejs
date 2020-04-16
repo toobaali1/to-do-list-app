@@ -8,21 +8,21 @@
 
     <h1 id="dateHeading"><%= dateTitle %></h1>
     <h1 class="box" id="heading"> <%= listTitle %> </h1>
-    
    
-    <form action="/" method="post">
         <div class="box">
-            <% for(let i = 0; i<listItem.length; i++){ %>
+           <% listItem.forEach(function(i){ %>
+            <form action="/delete" method="post">
                 <div class="item">
-                    <input type="checkbox">
-                    <p><%= listItem[i] %></p>
+                    <input type="checkbox" name="submitCheckbox" value=<%= i._id %> onChange="this.form.submit()">
+                    <p><%= i.name %></p>
                 </div>
-                
-            <% } %>
-            <input type="text" name="newItem" autocomplete="off" placeholder="New Item">
-            <button class="addBtn" type="submit" name="submitBtn" value=<%= listTitle %> > +</button>
-        </div>
+            </form>
+           <% }); %>
 
-    </form>
+           <form action="/" method="post">
+                <input type="text" name="newItem" autocomplete="off" placeholder="New Item">
+                <button class="addBtn" type="submit" name="submitBtn" value=<%= listTitle %> > +</button>
+            </form>
+        </div>
 
 <%- include("footer") -%>
