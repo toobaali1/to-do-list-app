@@ -45,9 +45,10 @@ app.get("/", function(req,res){
 app.post("/", function(req,res){
 
     const listName = req.body.submitBtn;
+    const itemName = req.body.newItem;
 
     const item = new Item({
-        name: req.body.newItem
+        name: itemName
     });
 
     if(listName === "Tasks") {
@@ -56,15 +57,27 @@ app.post("/", function(req,res){
     }
 
     else {
-        
+        List.findOne({name: listName}, function(err,foundList){
+            foundList.items.push(item);
+            foundList.save();
+            res.redirect("/"+ listName); 
+        });
     }
    
 });
 
 app.post("/delete", function(req,res){
     const checkedID = req.body.submitCheckbox;
-    Item.findByIdAndRemove(checkedID, function(err){});
-    res.redirect("/")
+    const listName = req.body.listNameBtn;
+
+    if(listName === "Tasks"){
+        Item.findByIdAndRemove(checkedID, function(err){});
+        res.redirect("/")
+    }
+    else{
+        List.findOneAndUpdate({name:listName},{$pull:{items:{_id:checkedID}}}, function(err, results){});
+        res.redirect("/"+listName);
+    }
     
 });
 
@@ -80,7 +93,6 @@ app.get("/:otherList", function(req,res){
                 items: []
             });
 
-            console.log("Creating list");
             list.save();
             res.redirect("/"+listName)
         }
@@ -88,17 +100,11 @@ app.get("/:otherList", function(req,res){
             // show an existing list
             res.render("list", {listTitle: listName, listItem: foundList.items , dateTitle: day});   
         }
-    });
+    }); 
     
-    
-    
-})
+});
 
 app.listen(3000, function(){
     console.log("Server running at port 3000");
     
 });
-
-// Add and delete from custom lists
-// show custom lists on header
-
